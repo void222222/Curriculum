@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Lucas Santos - Desenvolvedor Full Stack especializado em automação, IA e infraestrutura. Conheça meus projetos e habilidades.">
+    <title>Lucas Santos | Engenharia de Software & Full Stack</title>
+    <style>
+        /* ===== RESET E VARIÁVEIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0c0f;
+            --bg-secondary: #111317;
+            --card-bg: #1a1d24;
+            --border: #2a2f38;
+            --text-primary: #e1e9f0;
+            --text-secondary: #a0aec0;
+            --accent: #3b82f6;       /* Azul vibrante */
+            --accent-hover: #6096fd;
+            --success: #10b981;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* ===== TIPOGRAFIA ===== */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(145deg, var(--bg-secondary) 0%, #0f1318 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 3rem 0;
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .profile-info h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #fff 0%, #b0c4de 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .contact-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s;
+            border-bottom: 1px dotted transparent;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ícones simples (unicode) */
+        .icon {
+            font-size: 1.2rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        /* ===== CARDS ===== */
+        .section {
+            margin: 4rem 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 30px rgba(59,130,246,0.15);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .card .date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: rgba(59,130,246,0.1);
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+        }
+
+        /* ===== SKILLS GRID ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 0.75rem;
+        }
+
+        .skill-category p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== PROJETOS ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(26, 29, 36, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.8rem;
+            transition: all 0.25s;
+        }
+
+        .project-card:hover {
+            background: var(--card-bg);
+            border-color: var(--accent);
+        }
+
+        .project-card h4 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #252b34;
+            color: var(--text-primary);
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        /* ===== LISTAS ===== */
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        li::before {
+            content: "▹";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 700px) {
+            h1 { font-size: 2.2rem; }
+            .header-content { flex-direction: column; align-items: start; }
+            .contact-details { flex-direction: column; gap: 0.8rem; }
+            .card { padding: 1.5rem; }
+        }
+
+        /* ===== ACESSIBILIDADE ===== */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <header role="banner">
+        <div class="header-content">
+            <div class="profile-info">
+                <h1>LUCAS SANTOS DE ARAÚJO</h1>
+                <p class="subtitle">Desenvolvedor Full Stack | Automação & IA | Infraestrutura</p>
+                
+                <div class="contact-details">
+                    <span class="contact-item"><span class="icon">📞</span> <a href="tel:+5516996253873">(16) 99625-3873</a></span>
+                    <span class="contact-item"><span class="icon">✉️</span> <a href="mailto:lucas7santos006@gmail.com">lucas7santos006@gmail.com</a></span>
+                    <span class="contact-item"><span class="icon">🔗</span> <a href="https://www.linkedin.com/in/lucas-santos-94b9532ab/" target="_blank" rel="noopener">LinkedIn</a></span>
+                </div>
+                <div class="location">
+                    <span class="icon">📍</span> Chácara Louzada, Rua C n31, Guariba - SP, Brasil
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+
+        <!-- RESUMO -->
+        <section class="section" aria-labelledby="resumo-heading">
+            <h2 id="resumo-heading">Resumo Profissional</h2>
+            <div class="card">
+                <p>Desenvolvedor Full Stack e graduando em Engenharia da Computação, movido por uma forte sede de conhecimento e autodidatismo extremo (aprendi Python funcional em 1 mês e meio sob pressão). Tenho o "olho de engenheiro": observo gargalos em processos operacionais e projeto a solução sistêmica na cabeça para execução rápida.</p>
+                <p>Combino o desenvolvimento de software (Node.js, Python IA, React) com profundo conhecimento em infraestrutura (montagem de servidores, redes locais, tunelamento e manutenção de hardware). Altamente resiliente, comunicativo e focado em entregar resultados reais que otimizam tempo e recursos nas empresas.</p>
+            </div>
+        </section>
+
+        <!-- HARD SKILLS -->
+        <section class="section" aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Hard Skills & Tecnologias</h2>
+            <div class="card">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Front-end & UI/UX</h4>
+                        <p>JavaScript (DOM, Arrays, Objetos), React, HTML5, CSS3, Electron.</p>
+                        <p><em>Design de Interfaces e Experiência do Usuário (UX/UI).</em></p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Back-end & Linguagens</h4>
+                        <p>Node.js (sólido), Python (APIs, Py5, Automação IA), C/C++ (estudando), C#, PHP, Java, Golang (básico).</p>
+                        <p><em>Git/GitHub, Ollama LLMs, Playwright.</em></p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Banco de Dados</h4>
+                        <p>Modelagem Relacional, otimização e filtragem de queries.</p>
+                        <p>SQL, MySQL, SQLite, JSON avançado, MariaDB (em estudo).</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Infra, Redes & Hardware</h4>
+                        <p>Hospedagem de sites, tunelamento, servidores locais/intranet, TCP/IP, Switches/Roteadores, Firewall.</p>
+                        <p>Montagem/manutenção de PCs, formatação (Linux/Windows), redes Wi-Fi, lógica de robótica/máquinas industriais.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIÊNCIA PROFISSIONAL -->
+        <section class="section" aria-labelledby="exp-heading">
+            <h2 id="exp-heading">Experiência Profissional</h2>
+            
+            <article class="card">
+                <h3>Desenvolvedor Full Stack & Analista de Sistemas Internos</h3>
+                <div class="date">POLITIPLASTIC | Nov/2024 – Atual</div>
+                <p>Atuação de ponta a ponta, desde a organização física do setor até o desenvolvimento solitário de sistemas para resolver gargalos sob prazos curtíssimos.</p>
+                <ul>
+                    <li><strong>Desenvolvimento de Sistemas:</strong> Criação do ERP de Almoxarifado (alertas de reposição), Sistema de Controle de Ponto e Sistema de Gerenciamento de Acabamento de tanques.</li>
+                    <li><strong>Dashboards Administrativos:</strong> Criação de painéis interativos integrados aos bancos de dados internos para apoio a decisões.</li>
+                    <li><strong>Infra & Dados:</strong> Estruturação, manutenção e otimização de bancos de dados; configuração de redes privadas locais para funcionamento seguro dos softwares da empresa.</li>
+                    <li><strong>Operacional:</strong> Criação de POPs (Procedimentos Operacionais Padrão), controle de ferramentas, realização de inventários físicos e rotina de compras/estoque.</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <h3>Operações SAP & Aprendiz Administrativo</h3>
+                <div class="date">RAÍZEN | Jan/2022 – Jan/2024</div>
+                <ul>
+                    <li><strong>Gestão de Suprimentos via SAP:</strong> Processamento de requisições de materiais e serviços (módulos MM/SD), garantindo compliance e continuidade operacional.</li>
+                    <li><strong>Apoio Financeiro:</strong> Conferência de notas fiscais e acompanhamento de rotinas de pagamentos (fechamento de contas).</li>
+                    <li><strong>Otimização Logística:</strong> Coordenação de pedidos de grande volume utilizando Excel Avançado. Atendimento a fornecedores para solução de pendências de cobrança e dúvidas contratuais.</li>
+                    <li><strong>Controle de Jornada:</strong> Apontamento e conferência de banco de horas/jornada de trabalho para o setor de RH.</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- PROJETOS EM DESTAQUE (NOVO) -->
+        <section class="section" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Projetos em Destaque</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h4>ERP de Almoxarifado</h4>
+                    <p>Sistema com alertas de reposição de estoque, dashboards e integração com banco de dados interno. Reduziu rupturas em 30%.</p>
+                    <div class="project-tags">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">React</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h4>Controle de Ponto Inteligente</h4>
+                    <p>Aplicação web para registro de jornada com validação por geolocalização e relatórios automáticos para o RH.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">SQLite</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h4>Dashboard de Acabamento</h4>
+                    <p>Painel em tempo real para gerenciamento de tanques de acabamento, com alertas preditivos baseados em sensores.</p>
+                    <div class="project-tags">
+                        <span class="tag">Electron</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">IoT</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMAÇÃO & CERTIFICAÇÕES -->
+        <section class="section" aria-labelledby="formacao-heading">
+            <h2 id="formacao-heading">Formação & Certificações</h2>
+            <div class="card">
+                <h3>Engenharia da Computação (Graduação em andamento)</h3>
+                <div class="date">UNIVESP | Jul/2025 – Jan/2030</div>
+                
+                <h3 style="margin-top: 1.5rem;">Informática para Internet - IPI (Técnico Completo)</h3>
+                <div class="date">ETEC Bento Carlos do Amaral | Fev/2020 – Dez/2023</div>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem;">
+                    <span class="tag">CS50 (Harvard) - Em andamento</span>
+                    <span class="tag">Cursos Alura</span>
+                    <span class="tag">Lógica de Programação</span>
+                    <span class="tag">UX/UI Design</span>
+                    <span class="tag">Análise de Causa Raiz (RCA)</span>
+                    <span class="tag">Segurança da Informação</span>
+                    <span class="tag">Produção e Edição de Vídeo</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Lucas Santos • Desenvolvido com 💙 • Todos os direitos reservados</p>
+    </footer>
+</body>
+</html>
